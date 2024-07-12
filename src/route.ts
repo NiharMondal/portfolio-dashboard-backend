@@ -11,9 +11,10 @@ const routerArray = [
     {path: "/skill", element: skillRouter},
 ]
 
-
 const router = Router()
 
+
 routerArray.forEach((ra)=> router.use(ra.path, ra.element))
+
 
 export const rootRouter = router;
