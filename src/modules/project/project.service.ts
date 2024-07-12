@@ -1,5 +1,5 @@
 
-import { prisma } from "../../lib/db"
+import prisma  from "../../lib/db"
 
 import { generateUrl } from "../../helpers/generateUrl"
 import { Project } from "@prisma/client";

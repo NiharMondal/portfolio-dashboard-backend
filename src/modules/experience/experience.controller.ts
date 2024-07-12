@@ -20,7 +20,7 @@ const findFromDB = asyncHadler(async(req:Request, res: Response)=>{
     const result = await experienceService.findFromDB();
 
     sendResponse(res, {
-        statusCode:201,
+        statusCode:200,
         message:'Experience fetched successfully',
         result: result
     })
@@ -31,7 +31,7 @@ const findSingle = asyncHadler(async(req:Request, res: Response)=>{
     const result = await experienceService.findSingle(req.params.slug);
 
     sendResponse(res, {
-        statusCode:201,
+        statusCode:200,
         message:'Single experience fetched successfully',
         result: result
     })
@@ -43,7 +43,7 @@ const updateFromDB = asyncHadler(async(req:Request, res: Response)=>{
     const result = await experienceService.updateFromDB(req.params.slug, req.body);
 
     sendResponse(res, {
-        statusCode:201,
+        statusCode:200,
         message:'Experience updated successfully',
         result: result
     })
@@ -54,7 +54,7 @@ const deleteFromDB = asyncHadler(async(req:Request, res: Response)=>{
     const result = await experienceService.deleteFromDB(req.params.slug);
 
     sendResponse(res, {
-        statusCode:201,
+        statusCode:200,
         message:'Experience deleted successfully',
         result: result
     })

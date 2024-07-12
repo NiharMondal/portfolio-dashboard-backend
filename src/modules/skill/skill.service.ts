@@ -1,5 +1,5 @@
 
-import { prisma } from "../../lib/db"
+import prisma  from "../../lib/db"
 import { Skill } from "@prisma/client";
 
 

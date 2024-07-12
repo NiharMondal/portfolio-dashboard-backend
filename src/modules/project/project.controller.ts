@@ -19,7 +19,7 @@ const findFromDB = asyncHadler(async(req:Request, res: Response)=>{
     const result = await projectService.findFromDB();
 
     sendResponse(res, {
-        statusCode:201,
+        statusCode:200,
         message:'Project fetched successfully',
         result: result
     })
@@ -30,7 +30,7 @@ const findSingle = asyncHadler(async(req:Request, res: Response)=>{
     const result = await projectService.findSingle(req.params.slug);
 
     sendResponse(res, {
-        statusCode:201,
+        statusCode:200,
         message:'Single project fetched successfully',
         result: result
     })
@@ -42,7 +42,7 @@ const updateFromDB = asyncHadler(async(req:Request, res: Response)=>{
     const result = await projectService.updateFromDB(req.params.slug, req.body);
 
     sendResponse(res, {
-        statusCode:201,
+        statusCode:200,
         message:'Project updated successfully',
         result: result
     })
@@ -53,7 +53,7 @@ const deleteFromDB = asyncHadler(async(req:Request, res: Response)=>{
     const result = await projectService.deleteFromDB(req.params.slug);
 
     sendResponse(res, {
-        statusCode:201,
+        statusCode:200,
         message:'Project deleted successfully',
         result: result
     })

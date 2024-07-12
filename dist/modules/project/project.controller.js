@@ -27,7 +27,7 @@ const createIntoDB = (0, asyncHandler_1.default)((req, res) => __awaiter(void 0,
 const findFromDB = (0, asyncHandler_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const result = yield project_service_1.projectService.findFromDB();
     (0, sendResponse_1.sendResponse)(res, {
-        statusCode: 201,
+        statusCode: 200,
         message: 'Project fetched successfully',
         result: result
     });
@@ -35,7 +35,7 @@ const findFromDB = (0, asyncHandler_1.default)((req, res) => __awaiter(void 0, v
 const findSingle = (0, asyncHandler_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const result = yield project_service_1.projectService.findSingle(req.params.slug);
     (0, sendResponse_1.sendResponse)(res, {
-        statusCode: 201,
+        statusCode: 200,
         message: 'Single project fetched successfully',
         result: result
     });
@@ -43,7 +43,7 @@ const findSingle = (0, asyncHandler_1.default)((req, res) => __awaiter(void 0, v
 const updateFromDB = (0, asyncHandler_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const result = yield project_service_1.projectService.updateFromDB(req.params.slug, req.body);
     (0, sendResponse_1.sendResponse)(res, {
-        statusCode: 201,
+        statusCode: 200,
         message: 'Project updated successfully',
         result: result
     });
@@ -51,7 +51,7 @@ const updateFromDB = (0, asyncHandler_1.default)((req, res) => __awaiter(void 0,
 const deleteFromDB = (0, asyncHandler_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const result = yield project_service_1.projectService.deleteFromDB(req.params.slug);
     (0, sendResponse_1.sendResponse)(res, {
-        statusCode: 201,
+        statusCode: 200,
         message: 'Project deleted successfully',
         result: result
     });

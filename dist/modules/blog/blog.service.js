@@ -8,23 +8,26 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.blogService = void 0;
-const db_1 = require("../../lib/db");
+const db_1 = __importDefault(require("../../lib/db"));
 const generateUrl_1 = require("../../helpers/generateUrl");
 const createIntoDB = (payload) => __awaiter(void 0, void 0, void 0, function* () {
     const slug = (0, generateUrl_1.generateUrl)(payload.title);
-    const result = db_1.prisma.blog.create({
+    const result = db_1.default.blog.create({
         data: Object.assign(Object.assign({}, payload), { slug })
     });
     return result;
 });
 const findFromDB = () => __awaiter(void 0, void 0, void 0, function* () {
-    const result = db_1.prisma.blog.findMany();
+    const result = db_1.default.blog.findMany();
     return result;
 });
 const findSingle = (slug) => __awaiter(void 0, void 0, void 0, function* () {
-    const result = db_1.prisma.blog.findUnique({
+    const result = db_1.default.blog.findUnique({
         where: {
             slug: slug
         }
@@ -32,7 +35,7 @@ const findSingle = (slug) => __awaiter(void 0, void 0, void 0, function* () {
     return result;
 });
 const updateFromDB = (id, payload) => __awaiter(void 0, void 0, void 0, function* () {
-    const result = db_1.prisma.blog.update({
+    const result = db_1.default.blog.update({
         where: {
             id: id,
         },
@@ -41,7 +44,7 @@ const updateFromDB = (id, payload) => __awaiter(void 0, void 0, void 0, function
     return result;
 });
 const deleteFromDB = (id) => __awaiter(void 0, void 0, void 0, function* () {
-    const result = db_1.prisma.blog.delete({
+    const result = db_1.default.blog.delete({
         where: {
             id: id
         }

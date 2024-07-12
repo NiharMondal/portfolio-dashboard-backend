@@ -8,21 +8,24 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.experienceService = void 0;
-const db_1 = require("../../lib/db");
+const db_1 = __importDefault(require("../../lib/db"));
 const createIntoDB = (payload) => __awaiter(void 0, void 0, void 0, function* () {
-    const result = db_1.prisma.experience.create({
+    const result = db_1.default.experience.create({
         data: payload
     });
     return result;
 });
 const findFromDB = () => __awaiter(void 0, void 0, void 0, function* () {
-    const result = db_1.prisma.experience.findMany();
+    const result = db_1.default.experience.findMany();
     return result;
 });
 const findSingle = (slug) => __awaiter(void 0, void 0, void 0, function* () {
-    const result = db_1.prisma.experience.findUnique({
+    const result = db_1.default.experience.findUnique({
         where: {
             id: slug
         }
@@ -30,7 +33,7 @@ const findSingle = (slug) => __awaiter(void 0, void 0, void 0, function* () {
     return result;
 });
 const updateFromDB = (id, payload) => __awaiter(void 0, void 0, void 0, function* () {
-    const result = db_1.prisma.experience.update({
+    const result = db_1.default.experience.update({
         where: {
             id: id,
         },
@@ -39,7 +42,7 @@ const updateFromDB = (id, payload) => __awaiter(void 0, void 0, void 0, function
     return result;
 });
 const deleteFromDB = (id) => __awaiter(void 0, void 0, void 0, function* () {
-    const result = db_1.prisma.experience.delete({
+    const result = db_1.default.experience.delete({
         where: {
             id: id
         }

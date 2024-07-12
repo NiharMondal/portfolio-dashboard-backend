@@ -18,7 +18,7 @@ const findFromDB = asyncHadler(async(req:Request, res: Response)=>{
     const result = await blogService.findFromDB();
 
     sendResponse(res, {
-        statusCode:201,
+        statusCode:200,
         message:'Blog fetched successfully',
         result: result
     })
@@ -29,7 +29,7 @@ const findSingle = asyncHadler(async(req:Request, res: Response)=>{
     const result = await blogService.findSingle(req.params.slug);
 
     sendResponse(res, {
-        statusCode:201,
+        statusCode:200,
         message:'Single blog fetched successfully',
         result: result
     })
@@ -41,7 +41,7 @@ const updateFromDB = asyncHadler(async(req:Request, res: Response)=>{
     const result = await blogService.updateFromDB(req.params.slug, req.body);
 
     sendResponse(res, {
-        statusCode:201,
+        statusCode:200,
         message:'Blog updated successfully',
         result: result
     })
@@ -52,7 +52,7 @@ const deleteFromDB = asyncHadler(async(req:Request, res: Response)=>{
     const result = await blogService.deleteFromDB(req.params.slug);
 
     sendResponse(res, {
-        statusCode:201,
+        statusCode:200,
         message:'Blog deleted successfully',
         result: result
     })
