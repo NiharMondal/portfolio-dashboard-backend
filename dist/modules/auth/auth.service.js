@@ -50,6 +50,7 @@ const adminLogin = (payload) => __awaiter(void 0, void 0, void 0, function* () {
     }
     const jwtPayload = {
         id: user.id,
+        name: user.name,
         email: user.email,
         role: user.role
     };
