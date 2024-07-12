@@ -2,13 +2,15 @@ generator client {
   provider = "prisma-client-js"
 }
 
+
 datasource db {
-  provider = "mongodb"
-  url      = env("DATABASE_URL")
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
 }
 
 model Blog {
-  id       String    @id @default(auto()) @map("_id") @db.ObjectId
+  id       String    @id @default(uuid())
   title       String   @unique
   description String
   photo       String?
@@ -18,7 +20,7 @@ model Blog {
 }
 
 model Project {
-  id       String    @id @default(auto()) @map("_id") @db.ObjectId
+  id       String    @id @default(uuid())
   title       String   @unique
   description String
   photo       String
@@ -28,7 +30,7 @@ model Project {
 }
 
 model Experience {
-  id       String    @id @default(auto()) @map("_id") @db.ObjectId
+  id       String    @id @default(uuid())
   position         String
   company          String
   start_date       String
@@ -39,7 +41,7 @@ model Experience {
 }
 
 model Skill {
-  id       String    @id @default(auto()) @map("_id") @db.ObjectId
+  id       String    @id @default(uuid())
   name      String  @unique
   isDeleted Boolean @default(false)
 
@@ -48,7 +50,10 @@ model Skill {
 }
 
 model User {
-  id       String    @id @default(auto()) @map("_id") @db.ObjectId
+  id       String    @id @default(uuid())
   email    String @unique
   password String
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
