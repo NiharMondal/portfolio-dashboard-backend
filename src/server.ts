@@ -5,7 +5,6 @@ function main() {
 	let server: Server;
 
 	server = app.listen(5000, () => {
-		
 		console.log("server is running on port 5000");
 	});
 
@@ -28,4 +27,4 @@ function main() {
 	});
 }
 
-main()
+main();
