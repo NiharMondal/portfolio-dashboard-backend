@@ -5,7 +5,7 @@ import { Skill } from "@prisma/client";
 
 const createIntoDB = async(payload: Skill)=> {
     
-    const result = prisma.skill.create({
+    const result = await prisma.skill.create({
         data:payload
     });
 
@@ -14,14 +14,14 @@ const createIntoDB = async(payload: Skill)=> {
 
 
 const findFromDB = async()=>{
-    const result = prisma.skill.findMany();
+    const result = await prisma.skill.findMany();
 
     return result;
 }
 
 
 const findSingle = async(slug:string)=>{
-    const result = prisma.skill.findUnique({
+    const result = await prisma.skill.findUnique({
         where:{
             id: slug
         }
@@ -32,7 +32,7 @@ const findSingle = async(slug:string)=>{
 
 
 const updateFromDB = async(id:string,payload: Skill)=>{
-    const result = prisma.skill.update({
+    const result = await prisma.skill.update({
         where:{
             id:id,
         },
@@ -44,7 +44,7 @@ const updateFromDB = async(id:string,payload: Skill)=>{
 
 
 const deleteFromDB = async(id:string)=>{
-    const result = prisma.skill.delete({
+    const result = await prisma.skill.delete({
         where:{
             id: id
         }

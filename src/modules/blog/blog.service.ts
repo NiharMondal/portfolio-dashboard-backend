@@ -6,7 +6,7 @@ import { generateUrl } from "../../helpers/generateUrl"
 
 const createIntoDB = async(payload: Blog)=> {
     const slug = generateUrl(payload.title)
-    const result = prisma.blog.create({
+    const result = await prisma.blog.create({
         data:{
             ...payload,
             slug
@@ -18,14 +18,16 @@ const createIntoDB = async(payload: Blog)=> {
 
 
 const findFromDB = async()=>{
-    const result = prisma.blog.findMany();
+    const result = await prisma.blog.findMany({orderBy:{
+        createdAt:"desc"
+    }});
 
     return result;
 }
 
 
 const findSingle = async(slug:string)=>{
-    const result = prisma.blog.findUnique({
+    const result = await prisma.blog.findUnique({
         where:{
             slug: slug
         }
@@ -36,7 +38,7 @@ const findSingle = async(slug:string)=>{
 
 
 const updateFromDB = async(id:string,payload: Blog)=>{
-    const result = prisma.blog.update({
+    const result = await prisma.blog.update({
         where:{
             id:id,
         },
@@ -48,7 +50,7 @@ const updateFromDB = async(id:string,payload: Blog)=>{
 
 
 const deleteFromDB = async(id:string)=>{
-    const result = prisma.blog.delete({
+    const result = await prisma.blog.delete({
         where:{
             id: id
         }

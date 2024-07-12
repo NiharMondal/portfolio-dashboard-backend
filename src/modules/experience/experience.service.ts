@@ -5,7 +5,7 @@ import { Experience } from "@prisma/client";
 
 const createIntoDB = async(payload: Experience)=> {
    
-    const result = prisma.experience.create({
+    const result = await prisma.experience.create({
         data: payload
     });
 
@@ -14,14 +14,14 @@ const createIntoDB = async(payload: Experience)=> {
 
 
 const findFromDB = async()=>{
-    const result = prisma.experience.findMany();
+    const result = await prisma.experience.findMany();
 
     return result;
 }
 
 
 const findSingle = async(slug:string)=>{
-    const result = prisma.experience.findUnique({
+    const result = await prisma.experience.findUnique({
         where:{
             id: slug
         }
@@ -32,7 +32,7 @@ const findSingle = async(slug:string)=>{
 
 
 const updateFromDB = async(id:string,payload: Experience)=>{
-    const result = prisma.experience.update({
+    const result = await prisma.experience.update({
         where:{
             id:id,
         },
@@ -44,7 +44,7 @@ const updateFromDB = async(id:string,payload: Experience)=>{
 
 
 const deleteFromDB = async(id:string)=>{
-    const result = prisma.experience.delete({
+    const result = await prisma.experience.delete({
         where:{
             id: id
         }

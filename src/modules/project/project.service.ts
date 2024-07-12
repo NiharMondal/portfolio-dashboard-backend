@@ -7,7 +7,7 @@ import { Project } from "@prisma/client";
 
 const createIntoDB = async(payload: Project)=> {
     const slug = generateUrl(payload.title)
-    const result = prisma.project.create({
+    const result = await prisma.project.create({
         data:{
             ...payload,
             slug
@@ -19,14 +19,16 @@ const createIntoDB = async(payload: Project)=> {
 
 
 const findFromDB = async()=>{
-    const result = prisma.project.findMany();
+    const result = prisma.project.findMany({orderBy:{
+        createdAt:"desc"
+    }});
 
     return result;
 }
 
 
 const findSingle = async(slug:string)=>{
-    const result = prisma.project.findUnique({
+    const result = await prisma.project.findUnique({
         where:{
             slug: slug
         }
@@ -37,7 +39,7 @@ const findSingle = async(slug:string)=>{
 
 
 const updateFromDB = async(id:string,payload: Project)=>{
-    const result = prisma.project.update({
+    const result = await prisma.project.update({
         where:{
             id:id,
         },
@@ -49,7 +51,7 @@ const updateFromDB = async(id:string,payload: Project)=>{
 
 
 const deleteFromDB = async(id:string)=>{
-    const result = prisma.project.delete({
+    const result = await prisma.project.delete({
         where:{
             id: id
         }

@@ -62,14 +62,14 @@ const adminLogin = async (payload:User)=>{
 
 
 const findFromDB = async()=>{
-    const result = prisma.user.findMany();
+    const result = await prisma.user.findMany();
 
     return result;
 }
 
 
 const findSingle = async(id:string)=>{
-    const result = prisma.user.findUnique({
+    const result = await prisma.user.findUnique({
         where:{
             id: id
         }
@@ -80,7 +80,7 @@ const findSingle = async(id:string)=>{
 
 
 const updateFromDB = async(id:string,payload: User)=>{
-    const result = prisma.user.update({
+    const result = await prisma.user.update({
         where:{
             id:id,
         },
@@ -92,7 +92,7 @@ const updateFromDB = async(id:string,payload: User)=>{
 
 
 const deleteFromDB = async(id:string)=>{
-    const result = prisma.user.delete({
+    const result = await prisma.user.delete({
         where:{
             id: id
         }
