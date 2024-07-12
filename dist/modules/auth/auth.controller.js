@@ -27,8 +27,8 @@ const registerAdmin = (0, asyncHandler_1.default)((req, res) => __awaiter(void 0
 const adminLogin = (0, asyncHandler_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const result = yield auth_service_1.authService.adminLogin(req.body);
     (0, sendResponse_1.sendResponse)(res, {
-        statusCode: 201,
-        message: 'Admin created successfully',
+        statusCode: 200,
+        message: 'Wellcome to your dashboard',
         result: result
     });
 }));

@@ -57,7 +57,11 @@ const adminLogin = async (payload:User)=>{
 
     const token = jwt.sign(jwtPayload, config.jwt_secret as string);
 
-    return token;
+    return {
+        id: user.id,
+        name: user.name,
+        token
+    };
 }
 
 

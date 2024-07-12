@@ -15,17 +15,17 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.experienceService = void 0;
 const db_1 = __importDefault(require("../../lib/db"));
 const createIntoDB = (payload) => __awaiter(void 0, void 0, void 0, function* () {
-    const result = db_1.default.experience.create({
+    const result = yield db_1.default.experience.create({
         data: payload
     });
     return result;
 });
 const findFromDB = () => __awaiter(void 0, void 0, void 0, function* () {
-    const result = db_1.default.experience.findMany();
+    const result = yield db_1.default.experience.findMany();
     return result;
 });
 const findSingle = (slug) => __awaiter(void 0, void 0, void 0, function* () {
-    const result = db_1.default.experience.findUnique({
+    const result = yield db_1.default.experience.findUnique({
         where: {
             id: slug
         }
@@ -33,7 +33,7 @@ const findSingle = (slug) => __awaiter(void 0, void 0, void 0, function* () {
     return result;
 });
 const updateFromDB = (id, payload) => __awaiter(void 0, void 0, void 0, function* () {
-    const result = db_1.default.experience.update({
+    const result = yield db_1.default.experience.update({
         where: {
             id: id,
         },
@@ -42,7 +42,7 @@ const updateFromDB = (id, payload) => __awaiter(void 0, void 0, void 0, function
     return result;
 });
 const deleteFromDB = (id) => __awaiter(void 0, void 0, void 0, function* () {
-    const result = db_1.default.experience.delete({
+    const result = yield db_1.default.experience.delete({
         where: {
             id: id
         }

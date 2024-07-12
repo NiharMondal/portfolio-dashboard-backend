@@ -54,14 +54,18 @@ const adminLogin = (payload) => __awaiter(void 0, void 0, void 0, function* () {
         role: user.role
     };
     const token = jsonwebtoken_1.default.sign(jwtPayload, config_1.config.jwt_secret);
-    return token;
+    return {
+        id: user.id,
+        name: user.name,
+        token
+    };
 });
 const findFromDB = () => __awaiter(void 0, void 0, void 0, function* () {
-    const result = db_1.default.user.findMany();
+    const result = yield db_1.default.user.findMany();
     return result;
 });
 const findSingle = (id) => __awaiter(void 0, void 0, void 0, function* () {
-    const result = db_1.default.user.findUnique({
+    const result = yield db_1.default.user.findUnique({
         where: {
             id: id
         }
@@ -69,7 +73,7 @@ const findSingle = (id) => __awaiter(void 0, void 0, void 0, function* () {
     return result;
 });
 const updateFromDB = (id, payload) => __awaiter(void 0, void 0, void 0, function* () {
-    const result = db_1.default.user.update({
+    const result = yield db_1.default.user.update({
         where: {
             id: id,
         },
@@ -78,7 +82,7 @@ const updateFromDB = (id, payload) => __awaiter(void 0, void 0, void 0, function
     return result;
 });
 const deleteFromDB = (id) => __awaiter(void 0, void 0, void 0, function* () {
-    const result = db_1.default.user.delete({
+    const result = yield db_1.default.user.delete({
         where: {
             id: id
         }

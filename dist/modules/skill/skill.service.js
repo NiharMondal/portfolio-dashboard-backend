@@ -15,17 +15,17 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.skillService = void 0;
 const db_1 = __importDefault(require("../../lib/db"));
 const createIntoDB = (payload) => __awaiter(void 0, void 0, void 0, function* () {
-    const result = db_1.default.skill.create({
+    const result = yield db_1.default.skill.create({
         data: payload
     });
     return result;
 });
 const findFromDB = () => __awaiter(void 0, void 0, void 0, function* () {
-    const result = db_1.default.skill.findMany();
+    const result = yield db_1.default.skill.findMany();
     return result;
 });
 const findSingle = (slug) => __awaiter(void 0, void 0, void 0, function* () {
-    const result = db_1.default.skill.findUnique({
+    const result = yield db_1.default.skill.findUnique({
         where: {
             id: slug
         }
@@ -33,7 +33,7 @@ const findSingle = (slug) => __awaiter(void 0, void 0, void 0, function* () {
     return result;
 });
 const updateFromDB = (id, payload) => __awaiter(void 0, void 0, void 0, function* () {
-    const result = db_1.default.skill.update({
+    const result = yield db_1.default.skill.update({
         where: {
             id: id,
         },
@@ -42,7 +42,7 @@ const updateFromDB = (id, payload) => __awaiter(void 0, void 0, void 0, function
     return result;
 });
 const deleteFromDB = (id) => __awaiter(void 0, void 0, void 0, function* () {
-    const result = db_1.default.skill.delete({
+    const result = yield db_1.default.skill.delete({
         where: {
             id: id
         }

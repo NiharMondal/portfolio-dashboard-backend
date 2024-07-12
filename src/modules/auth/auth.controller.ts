@@ -18,8 +18,8 @@ const adminLogin = asyncHadler(async(req:Request, res: Response)=>{
     const result = await authService.adminLogin(req.body);
 
     sendResponse(res, {
-        statusCode:201,
-        message:'Admin created successfully',
+        statusCode:200,
+        message:'Wellcome to your dashboard',
         result: result
     })
 })
