@@ -1,11 +1,12 @@
 import { Server } from "http";
 import app from "./app";
+import { config } from "./config";
 
 function main() {
 	let server: Server;
 
-	server = app.listen(5000, () => {
-		console.log("server is running on port 5000");
+	server = app.listen(config.port as unknown as number, () => {
+		console.log(`server is running on port ${config.port}`);
 	});
 
 	process.on("unhandledRejection", (err) => {
