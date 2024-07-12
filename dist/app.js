@@ -11,8 +11,9 @@ const route_1 = require("./route");
 const app = (0, express_1.default)();
 app.use((0, cors_1.default)({
     origin: [
-        "https://assignment-9-front-end.vercel.app",
-        "http://localhost:3000",
+        "http://localhost:5173",
+        "https://nihar-mondal.vercel.app/",
+        "https://portfolio-dashboard-client-iota.vercel.app/"
     ],
     credentials: true,
 }));

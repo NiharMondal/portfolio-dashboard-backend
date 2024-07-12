@@ -10,8 +10,9 @@ const app: Application = express();
 app.use(
 	cors({
 		origin: [
-			"https://assignment-9-front-end.vercel.app",
-			"http://localhost:3000",
+			"http://localhost:5173",
+			"https://nihar-mondal.vercel.app/",
+			"https://portfolio-dashboard-client-iota.vercel.app/"
 		],
 		credentials: true,
 	})
