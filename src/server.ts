@@ -1,7 +1,7 @@
 import { Server } from "http";
 import app from "./app";
 
-(function main() {
+function main() {
 	let server: Server;
 
 	server = app.listen(5000, () => {
@@ -26,7 +26,6 @@ import app from "./app";
 		console.log(`👻 uncaughtException is detected , shutting down ...`);
 		process.exit(1);
 	});
-})()
+}
 
-
-
+main()
