@@ -21,6 +21,9 @@ model Blog {
 model Project {
   id          String   @id @default(uuid())
   title       String   @unique
+  live_link   String 
+  front_end   String?
+  back_end    String?
   description String
   photo       String
   slug        String   @unique
