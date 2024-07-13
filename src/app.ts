@@ -7,17 +7,24 @@ import { rootRouter } from "./route";
 
 const app: Application = express();
 
-app.use(
-	cors({
-		origin: [
-			"http://localhost:5173",
-			"https://nihar-mondal.vercel.app/",
-			"https://portfolio-dashboard-client-iota.vercel.app/"
-		],
-		credentials: true,
-	})
-);
+const allowedOrigins = [
+	"https://nihar-mondal.vercel.app/",
+	"https://portfolio-dashboard-client-iota.vercel.app/"
+];
+
+app.use(cors({
+  origin: function (origin, callback) {
+    // Check if the origin is in the allowed origins list
+    if (allowedOrigins.indexOf(origin as string) !== -1 || !origin) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  }
+}));
+
 app.use(express.json());
+app.use(express.urlencoded({extended:true}))
 
 //use routes
 app.use("/api/v1", rootRouter);
