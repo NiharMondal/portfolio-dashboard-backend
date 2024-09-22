@@ -3,13 +3,12 @@ generator client {
 }
 
 datasource db {
-  provider  = "postgresql"
-  url       = env("DATABASE_URL")
-  directUrl = env("DIRECT_URL")
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
 }
 
 model Blog {
-  id          String   @id @default(uuid())
+  id          String   @id @default(auto()) @map("_id") @db.ObjectId
   title       String   @unique
   description String
   photo       String?
@@ -19,31 +18,32 @@ model Blog {
 }
 
 model Project {
-  id          String   @id @default(uuid())
-  title       String   @unique
-  live_link   String 
-  front_end   String?
-  back_end    String?
-  description String
-  photo       String
-  slug        String   @unique
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
+  id           String   @id @default(auto()) @map("_id") @db.ObjectId
+  photo        String
+  name         String   @unique
+  liveLink     String
+  gitHubLink   String
+  description  String
+  technologies String[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
 
 model Experience {
-  id               String   @id @default(uuid())
-  position         String
-  company          String
-  start_date       String
-  end_date         String?
-  responsibilities String
-  createdAt        DateTime @default(now())
-  updatedAt        DateTime @updatedAt
+  id      String  @id @default(auto()) @map("_id") @db.ObjectId
+  title   String
+  url     String
+  company String?
+  range   String
+  html    String
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
 
 model Skill {
-  id        String  @id @default(uuid())
+  id        String  @id @default(auto()) @map("_id") @db.ObjectId
   name      String  @unique
   isDeleted Boolean @default(false)
 
@@ -52,7 +52,7 @@ model Skill {
 }
 
 model User {
-  id        String   @id @default(uuid())
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
   name      String   @default("Super Admin")
   email     String   @unique
   password  String
